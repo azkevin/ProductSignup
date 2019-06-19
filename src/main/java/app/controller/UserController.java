@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import app.datastore.UserRepository;
@@ -22,25 +21,17 @@ public class UserController {
 	private UserRepository userRepository;
 	
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
-	public ResponseEntity<String> addUser(@RequestParam String name
-			, @RequestParam String email, @RequestParam String address) {
-		// Validation: if user is valid
-		System.out.println(email);
-		System.out.println(name);
-		System.out.println(address);
-		User n = new User();
-		n.setEmail(email);
-		n.setName(name);
-		n.setAddress(address);
-		userRepository.save(n);
+	public ResponseEntity<String> addUser(@RequestBody User user) {
+		// TODO: Validation for users
+		userRepository.save(user);
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("redirect", "/greeting"); 
+		headers.add("redirect", "/payment"); 
 		return new ResponseEntity<String>(headers, HttpStatus.ACCEPTED);
 		// return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 	}
 	
 	// For debug purposes only
-	@GetMapping(path="/all")
+	@GetMapping(path="/allUsers")
 	public @ResponseBody Iterable<User> getAllUsers() {
 		// This returns a JSON or XML with the users
 		return userRepository.findAll();
