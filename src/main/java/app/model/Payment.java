@@ -10,11 +10,11 @@ public class Payment {
 
     private String expiry;
 
-    private int cvv;
+    private String cvv;
     
     private String address;
 
-	public Payment(String ccn, String expiry, int cvv, String address) {
+	public Payment(String ccn, String expiry, String cvv, String address) {
 		super();
 		this.ccn = ccn;
 		this.expiry = expiry;
@@ -40,11 +40,11 @@ public class Payment {
 		this.expiry = expiry;
 	}
 
-	public int getCvv() {
+	public String getCvv() {
 		return cvv;
 	}
 
-	public void setCvv(int cvv) {
+	public void setCvv(String cvv) {
 		this.cvv = cvv;
 	}
 

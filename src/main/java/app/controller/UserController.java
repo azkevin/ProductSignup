@@ -22,12 +22,30 @@ public class UserController {
 	
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
 	public ResponseEntity<String> addUser(@RequestBody User user) {
-		// TODO: Validation for users
-		userRepository.save(user);
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("redirect", "/payment"); 
-		return new ResponseEntity<String>(headers, HttpStatus.ACCEPTED);
-		// return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		headers.add(HttpHeaders.CONTENT_TYPE, "application/json; charset=UTF-8");
+		if (isUserValid(user)) {
+			userRepository.save(user);
+			headers.add("ok", "success adding user");
+			return new ResponseEntity<String>(headers, HttpStatus.OK);
+		} else {
+			headers.add("error", "client sent invalid data");
+			return new ResponseEntity<String>(headers, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	// TODO: Validation for user
+	public boolean isUserValid(User user) {
+		if (user.getEmail() == null || user.getEmail().equals("")) {
+			return false;
+		}
+		if (user.getName() == null || user.getName().equals("")) {
+			return false;
+		}
+		if (user.getAddress() == null || user.getAddress().equals("")) {
+			return false;
+		}
+		return true;
 	}
 	
 	// For debug purposes only

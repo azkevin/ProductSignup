@@ -36,13 +36,13 @@ Creates a new user
 
 * **Success Response:**
 
-  * **Code:** 202 <br />
-    **Content:** `{ redirect : "/payment" }`
+  * **Code:** 200 OK <br />
+    **Content:** `{ ok : "success adding user" }`
  
 * **Error Response:**
 
   * **Code:** 404 NOT FOUND <br />
-    **Content:** `{ error : "" }`
+    **Content:** `{ error : "client sent invalid data" }`
 
 * **Sample Call:**
 
@@ -81,13 +81,13 @@ Creates a payment method
 
 * **Success Response:**
 
-  * **Code:** 202 <br />
-    **Content:** `{ redirect : "/thanks" }`
+  * **Code:** 200 OK <br />
+    **Content:** `{ redirect : "success adding payment" }`
  
 * **Error Response:**
 
   * **Code:** 404 NOT FOUND <br />
-    **Content:** `{ error : "" }`
+    **Content:** `{ error : "client sent invalid data" }`
 
 * **Sample Call:**
 
