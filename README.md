@@ -26,7 +26,7 @@ Creates a new transaction by calling "Add User" then "Add Payment"
 * **Content-Type:**
   `application/json; charset=UTF-8`
   
-* **Required:**
+* **Required Params:**
 
    `email=[string]`
    
@@ -62,7 +62,7 @@ Creates a new transaction by calling "Add User" then "Add Payment"
     "ccn": "5457623898234112",
 	"expiry": "08/13",
 	"cvv": "123",
-	"address": "Address"
+	"billingAddress": "Address"
   }
   ```
 
@@ -80,7 +80,7 @@ Creates a new user
 * **Content-Type:**
   `application/json; charset=UTF-8`
   
-* **Required:**
+* **Required Body:**
 
    `email=[string]`
    
@@ -123,7 +123,7 @@ Creates a payment method
 * **Content-Type:**
   `application/json; charset=UTF-8`
   
-* **Required:**
+* **Required Body:**
 
    `ccn=[string]`
    
