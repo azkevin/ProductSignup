@@ -12,6 +12,60 @@ A simple product signup experience that utilizes Spring Boot REST APIs with MySQ
 
 ## REST APIs
 
+### Create Transaction
+Creates a new transaction by calling "Add User" then "Add Payment"
+
+* **URL**
+
+  /app/createTransaction
+
+* **Method:**
+
+  `POST`
+  
+* **Content-Type:**
+  `application/json; charset=UTF-8`
+  
+* **Required:**
+
+   `email=[string]`
+   
+   `name=[string]`
+   
+   `address=[string]`
+
+   `ccn=[string]`
+   
+   `expiry=[string]`
+   
+   `cvv=[string]`
+   
+   `billingAddress=[string]`
+
+* **Success Response:**
+
+  * **Code:** 200 OK <br />
+    **Content:** `{ ok : "successful transaction" }`
+ 
+* **Error Response:**
+
+  * **Code:** 404 NOT FOUND <br />
+    **Content:** `{}`
+
+* **Sample Call:**
+
+  ```
+  {
+    "email": "someemail@someemailproviders.com",
+    "name": "First",
+    "address": "Address"
+    "ccn": "5457623898234112",
+	"expiry": "08/13",
+	"cvv": "123",
+	"address": "Address"
+  }
+  ```
+
 ### Add User
 Creates a new user
 
@@ -75,7 +129,7 @@ Creates a payment method
    
    `expiry=[string]`
    
-   `cvv=[integer]`
+   `cvv=[string]`
    
    `address=[string]`
 
