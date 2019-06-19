@@ -21,8 +21,9 @@ $(document).ready(function(){
 			crossDomain: true,
 			dataType: 'json',
 			data : formData,
-			success: function(data){
-			    alert('successful');
+			complete: function(response){
+				//alert('Successfully called');
+				//window.location.href = response.getResponseHeader('redirect');
 			  },
 		});
 

@@ -1,6 +1,7 @@
 package app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -21,7 +22,7 @@ public class UserController {
 	private UserRepository userRepository;
 	
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
-	public ResponseEntity<String> persistPerson(@RequestParam String name
+	public ResponseEntity<String> addUser(@RequestParam String name
 			, @RequestParam String email, @RequestParam String address) {
 		// Validation: if user is valid
 		System.out.println(email);
@@ -32,7 +33,9 @@ public class UserController {
 		n.setName(name);
 		n.setAddress(address);
 		userRepository.save(n);
-		return ResponseEntity.status(HttpStatus.CREATED).build();
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("redirect", "/greeting"); 
+		return new ResponseEntity<String>(headers, HttpStatus.ACCEPTED);
 		// return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 	}
 	
