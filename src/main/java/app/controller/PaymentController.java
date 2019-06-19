@@ -22,7 +22,6 @@ public class PaymentController {
 	
 	@RequestMapping(value = "/addPayment", method = RequestMethod.POST)
 	public ResponseEntity<String> addPayment(@RequestBody Payment payment) {
-		// TODO: Validation for payment
 		HttpHeaders headers = new HttpHeaders();
 		headers.add(HttpHeaders.CONTENT_TYPE, "application/json; charset=UTF-8");
 		if (isPaymentValid(payment)) {
