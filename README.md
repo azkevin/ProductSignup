@@ -65,6 +65,8 @@ Creates a new transaction by calling "Add User" then "Add Payment"
 	"billingAddress": "Address"
   }
   ```
+  
+----
 
 ### Add User
 Creates a new user

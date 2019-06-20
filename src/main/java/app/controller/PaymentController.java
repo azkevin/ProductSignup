@@ -13,18 +13,23 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import app.datastore.PaymentRepository;
 import app.model.Payment;
+import app.service.PaymentService;
 
 @Controller
 @RequestMapping(path="/app")
 public class PaymentController {
+	
 	@Autowired
 	private PaymentRepository paymentRepository;
+	
+	@Autowired
+	private PaymentService paymentService;
 	
 	@RequestMapping(value = "/addPayment", method = RequestMethod.POST)
 	public ResponseEntity<String> addPayment(@RequestBody Payment payment) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add(HttpHeaders.CONTENT_TYPE, "application/json; charset=UTF-8");
-		if (isPaymentValid(payment)) {
+		if (paymentService.isPaymentValid(payment)) {
 			paymentRepository.save(payment);
 			headers.add("ok", "success adding payment");
 			return new ResponseEntity<String>(headers, HttpStatus.OK);
@@ -32,25 +37,6 @@ public class PaymentController {
 			headers.add("error", "client sent invalid data");
 			return new ResponseEntity<String>(headers, HttpStatus.BAD_REQUEST);
 		}
-	}
-
-	// TODO: Validation for payment
-	public boolean isPaymentValid(Payment payment) {
-		if (payment.getCcn() == null || payment.getCcn().equals("")) {
-			return false;
-		}
-		if (payment.getExpiry() == null || payment.getExpiry().equals("")) {
-			return false;
-		}
-		if ((payment.getCvv() == null || payment.getCvv().equals(""))
-				|| (Integer.parseInt(payment.getCvv()) < 0)
-				|| (Integer.parseInt(payment.getCvv()) > 999)) {
-			return false;
-		}
-		if (payment.getAddress() == null || payment.getAddress().equals("")) {
-			return false;
-		}
-		return true;
 	}
 	
 	// For debug purposes only
