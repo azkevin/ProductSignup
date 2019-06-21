@@ -2,13 +2,13 @@
 
 A simple product signup experience that utilizes Spring Boot REST APIs with MySQL as the datastore.
 
-<img src="https://i.imgur.com/islIUGH.jpg">
+## Getting Started
 
-## Usage
+1. Install and run MySQL Server and create an environment similar to the one found in [application.properties](https://github.com/azkevin/ProductSignup/blob/master/src/main/resources/application.properties)
 
-1. Import this project on STS and run it as a Spring Boot app.
+2. Download and run the latest [release](https://github.com/azkevin/ProductSignup/releases). Alternatively you can download this project and run it on STS as a Spring Boot app.
 
-2. Go to localhost:8080 on your web browser
+3. Run the REST APIs below on [localhost:8080](http://localhost:8080/).
 
 ## REST APIs
 
@@ -156,6 +156,10 @@ Creates a payment method
   }
   ```
 
-## Credit
+## Running the tests
+
+Run the Spring MVC Tests found in [app/test](https://github.com/azkevin/ProductSignup/tree/master/src/main/java/app/test)
+
+## Authors
 
 Created by Kevin Arindaeng
