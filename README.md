@@ -50,7 +50,7 @@ Creates a new transaction by calling "Add User" then "Add Payment"
 * **Error Response:**
 
   * **Code:** 400 BAD REQUEST <br />
-    **Content:** `{}`
+    **Content:** `{ error : "client sent invalid data" }`
 
 * **Sample Call:**
 
@@ -97,7 +97,7 @@ Creates a new user
  
 * **Error Response:**
 
-  * **Code:** 404 NOT FOUND <br />
+  * **Code:** 400 BAD REQUEST <br />
     **Content:** `{ error : "client sent invalid data" }`
 
 * **Sample Call:**
