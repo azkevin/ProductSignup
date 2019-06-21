@@ -25,8 +25,11 @@
 	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 	crossorigin="anonymous"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<link rel="stylesheet" href="css/app.css" type="text/css" media="screen, print" />
-<script type="text/javascript" src="js/app.js">;</script>
+<link rel="stylesheet" href="css/app.css" type="text/css"
+	media="screen, print" />
+<script type="text/javascript" src="js/app.js">
+	;
+</script>
 </head>
 
 <!-- Coded With Love By Mutiullah Samim -->
@@ -35,42 +38,253 @@
 	<dvi class="container h-100">
 	<div class="d-flex justify-content-center">
 		<div class="card mt-5 col-md-4 animated bounceInDown myForm">
-			<div class="card-header">
-				<h4>We are launching a new product! Please sign up below.</h4>
-			</div>
 			<div class="card-body">
-				<form id="userForm">
-					<div id="dynamic_container">
-						<div class="input-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text br-15"><i
-									class="fas fa-envelope-square"></i></span>
-							</div>
-							<input id="email" name="email" type="email" placeholder="Email"
-								class="form-control" />
-						</div>
-						<div class="input-group mt-3">
-							<div class="input-group-prepend">
-								<span class="input-group-text br-15"><i
-									class="fas fa-user"></i></span>
-							</div>
-							<input id="name" name="name" type="text" placeholder="Name"
-								class="form-control" />
-						</div>
-						<div class="input-group mt-3">
-							<div class="input-group-prepend">
-								<span class="input-group-text br-15"><i class="fas fa-map-marker-alt"></i></span>
-							</div>
-							<input id="address" name="address" type="text" placeholder="Address"
-								class="form-control" />
-						</div>
-					</div>
-					<br/>
-					<div class="card-footer">
-						<input type="submit" value="Submit" class="btn btn-success btn-sm float-none submit_btn">
-						</input>
-					</div>
-				</form>
+				<h2 id="restapis">REST APIs</h2>
+
+				<hr />
+
+				<h3 id="createtransaction">Create Transaction</h3>
+
+				<p>Creates a new transaction by calling "Add User" then "Add
+					Payment"</p>
+
+				<ul>
+					<li><p>
+							<strong>URL</strong>
+						</p>
+
+						<p>/app/createTransaction</p></li>
+
+					<li><p>
+							<strong>Method:</strong>
+						</p>
+
+						<p>
+							<code>POST</code>
+						</p></li>
+
+					<li><p>
+							<strong>Content-Type:</strong>
+							<code>application/json; charset=UTF-8</code>
+						</p></li>
+
+					<li><p>
+							<strong>Required Params:</strong>
+						</p>
+
+						<p>
+							<code>email=[string]</code>
+						</p>
+
+						<p>
+							<code>name=[string]</code>
+						</p>
+
+						<p>
+							<code>address=[string]</code>
+						</p>
+
+						<p>
+							<code>ccn=[string]</code>
+						</p>
+
+						<p>
+							<code>expiry=[string]</code>
+						</p>
+
+						<p>
+							<code>cvv=[string]</code>
+						</p>
+
+						<p>
+							<code>billingAddress=[string]</code>
+						</p></li>
+
+					<li><p>
+							<strong>Success Response:</strong>
+						</p>
+
+						<ul>
+							<li><strong>Code:</strong> 200 OK <br /> <strong>Content:</strong>
+								<code>{ ok : "successful transaction" }</code></li>
+						</ul></li>
+
+					<li><p>
+							<strong>Error Response:</strong>
+						</p>
+
+						<ul>
+							<li><strong>Code:</strong> 400 BAD REQUEST <br /> <strong>Content:</strong>
+								<code>{ error : "client sent invalid data" }</code></li>
+						</ul></li>
+
+					<li><p>
+							<strong>Sample Call:</strong>
+						</p> <pre>
+							<code>
+{
+	"email": "someemail@someemailproviders.com",
+	"name": "First",
+	"address": "Address"
+	"ccn": "5457623898234112",
+	"expiry": "08/13",
+	"cvv": "123",
+	"billingAddress": "Address"
+}
+</code>
+						</pre></li>
+				</ul>
+
+				<hr />
+
+				<h3 id="adduser">Add User</h3>
+
+				<p>Creates a new user</p>
+
+				<ul>
+					<li><p>
+							<strong>URL</strong>
+						</p>
+
+						<p>/app/addUser</p></li>
+
+					<li><p>
+							<strong>Method:</strong>
+						</p>
+
+						<p>
+							<code>POST</code>
+						</p></li>
+
+					<li><p>
+							<strong>Content-Type:</strong>
+							<code>application/json; charset=UTF-8</code>
+						</p></li>
+
+					<li><p>
+							<strong>Required Body:</strong>
+						</p>
+
+						<p>
+							<code>email=[string]</code>
+						</p>
+
+						<p>
+							<code>name=[string]</code>
+						</p>
+
+						<p>
+							<code>address=[string]</code>
+						</p></li>
+
+					<li><p>
+							<strong>Success Response:</strong>
+						</p>
+
+						<ul>
+							<li><strong>Code:</strong> 200 OK <br /> <strong>Content:</strong>
+								<code>{ ok : "success adding user" }</code></li>
+						</ul></li>
+
+					<li><p>
+							<strong>Error Response:</strong>
+						</p>
+
+						<ul>
+							<li><strong>Code:</strong> 400 BAD REQUEST <br /> <strong>Content:</strong>
+								<code>{ error : "client sent invalid data" }</code></li>
+						</ul></li>
+
+					<li><p>
+							<strong>Sample Call:</strong>
+						</p> <pre>
+							<code>
+{
+	"email": "someemail@someemailproviders.com",
+	"name": "First",
+	"address": "Address"
+}
+						
+						</pre> </code></li>
+				</ul>
+
+				<hr />
+
+				<h3 id="addpayment">Add Payment</h3>
+
+				<p>Creates a payment method</p>
+
+				<ul>
+					<li><p>
+							<strong>URL</strong>
+						</p>
+
+						<p>/app/addPayment</p></li>
+
+					<li><p>
+							<strong>Method:</strong>
+						</p>
+
+						<p>
+							<code>POST</code>
+						</p></li>
+
+					<li><p>
+							<strong>Content-Type:</strong>
+							<code>application/json; charset=UTF-8</code>
+						</p></li>
+
+					<li><p>
+							<strong>Required Body:</strong>
+						</p>
+
+						<p>
+							<code>ccn=[string]</code>
+						</p>
+
+						<p>
+							<code>expiry=[string]</code>
+						</p>
+
+						<p>
+							<code>cvv=[string]</code>
+						</p>
+
+						<p>
+							<code>address=[string]</code>
+						</p></li>
+
+					<li><p>
+							<strong>Success Response:</strong>
+						</p>
+
+						<ul>
+							<li><strong>Code:</strong> 200 OK <br /> <strong>Content:</strong>
+								<code>{ redirect : "success adding payment" }</code></li>
+						</ul></li>
+
+					<li><p>
+							<strong>Error Response:</strong>
+						</p>
+
+						<ul>
+							<li><strong>Code:</strong> 400 BAD REQUEST <br /> <strong>Content:</strong>
+								<code>{ error : "client sent invalid data" }</code></li>
+						</ul></li>
+
+					<li><p>
+							<strong>Sample Call:</strong>
+						</p> <pre>
+							<code>
+{
+	"ccn": "5457623898234113",
+	"expiry": "08/13",
+	"cvv": "123",
+	"address": "Address"
+}
+</code>
+						</pre></li>
+				</ul>
 			</div>
 		</div>
 	</div>

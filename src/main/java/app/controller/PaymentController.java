@@ -39,10 +39,10 @@ public class PaymentController {
 		}
 	}
 	
-	// For debug purposes only
-	@GetMapping(path="/allPayments")
-	public @ResponseBody Iterable<Payment> getAllPayments() {
-		// This returns a JSON or XML with the users
-		return paymentRepository.findAll();
-	}
+//	// For debug purposes only
+//	@GetMapping(path="/allPayments")
+//	public @ResponseBody Iterable<Payment> getAllPayments() {
+//		// This returns a JSON or XML with the users
+//		return paymentRepository.findAll();
+//	}
 }
