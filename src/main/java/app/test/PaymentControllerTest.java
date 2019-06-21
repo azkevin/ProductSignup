@@ -19,27 +19,27 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import app.controller.UserController;
-import app.datastore.UserRepository;
-import app.model.User;
-import app.service.UserService;
+import app.controller.PaymentController;
+import app.datastore.PaymentRepository;
+import app.model.Payment;
+import app.service.PaymentService;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(UserController.class)
-public class UserControllerTest {
+@WebMvcTest(PaymentController.class)
+public class PaymentControllerTest {
 
     @Autowired private MockMvc mockMvc;
     @Autowired private ObjectMapper objectMapper;
-    @MockBean private UserRepository userRepository;
-    @MockBean private UserService userService;
-    @Autowired private UserController controller;
-    private JacksonTester < User > jsonTester;
-    private User user;
+    @MockBean private PaymentRepository paymentRepository;
+    @MockBean private PaymentService paymentService;
+    @Autowired private PaymentController controller;
+    private JacksonTester < Payment > jsonTester;
+    private Payment payment;
     
     @Before
     public void setup() {
         JacksonTester.initFields(this, objectMapper);
-        user = new User();
+        payment = new Payment();
     }
     
     @Test
@@ -48,20 +48,20 @@ public class UserControllerTest {
     }
     
     @Test
-    public void addUser_IsValid_UserPersisted() throws Exception {
-        final String userJson = jsonTester.write(user).getJson();
-        given(userService.isUserValid(any(User.class))).willReturn(true);
+    public void addPayment_IsValid() throws Exception {
+        final String paymentJson = jsonTester.write(payment).getJson();
+        given(paymentService.isPaymentValid(any(Payment.class))).willReturn(true);
         mockMvc
-            .perform(post("/app/addUser").content(userJson).contentType(APPLICATION_JSON_UTF8))
+            .perform(post("/app/addPayment").content(paymentJson).contentType(APPLICATION_JSON_UTF8))
             .andExpect(status().isOk());
     }
     
     @Test
-    public void addUser_IsNotValid_UserNotPersisted() throws Exception {
-        final String userJson = jsonTester.write(user).getJson();
-        given(userService.isUserValid(any(User.class))).willReturn(false);
+    public void addPayment_IsNotValid() throws Exception {
+        final String paymentJson = jsonTester.write(payment).getJson();
+        given(paymentService.isPaymentValid(any(Payment.class))).willReturn(false);
         mockMvc
-            .perform(post("/app/addUser").content(userJson).contentType(APPLICATION_JSON_UTF8))
+            .perform(post("/app/addPayment").content(paymentJson).contentType(APPLICATION_JSON_UTF8))
             .andExpect(status().isBadRequest());
     }	
 	
